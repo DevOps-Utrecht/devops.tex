@@ -1,7 +1,10 @@
-# sticky.tex
+# devops.tex
 
-This is a collection of LaTeX classes and styles in use at Study Association Sticky.
-They are intended for use in minutes of committees and other meetings.
+This is a collection of LaTeX classes and styles for use at DevOps Utrecht.
+They are intended for use in minutes, and to provide shared font settings
+for other documents in LaTeX.
+
+Forked from [this repository](https://github.com/svsticky/sticky.tex).
 
 ## Versioning
 
@@ -11,21 +14,20 @@ The classes in this package follow [`semver`](http://semver.org/).
 
 These files require LaTeX2e. Older versions are not supported.
 
-`sticky_typography.cls` dependencies:
+`devops_typography.cls` dependencies:
 
- - `titlesec`
  - `bitstream-charter`
  - `carlito`
  - `fontenc`
+ - `titlesec`
 
-`sticky_minutes.cls` dependencies:
+`devops_minutes.cls` dependencies:
 
- - `sticky_typography`
- - `xspace`
+ - `devops_typography`
  - `fancyhdr`
  - `lastpage`
  - `multido`
- - `multido`
+ - `xspace`
 
 ## Installation
 
@@ -34,12 +36,12 @@ installing these styles:
 
  1. Put the `.cls` files in the same directory as your `.tex` file, you're done. Easy
     for simple, one-off documents.
- 1. Install these classes in your `TEXFHOME`. This is more involved, but after you
+ 1. Install these classes in your `TEXMFHOME`. This is more involved, but after you
     have done this, you never have to copy the style files again.
 
-### `TEXFHOME` installation
+### `TEXMFHOME` installation
 
-Run the following command to find your `TEXFHOME`. This should work both on Windows
+Run the following command to find your `TEXMFHOME`. This should work both on Windows
 and UNIX-y systems.
 
 ```
@@ -54,7 +56,7 @@ files in `C:/Users/duijf/texmf/tex/latex/commonstuff`. After that, they should g
 picked up. You can verify the installation with the `kpsewhich` command. For example:
 
 ```
-kpsewhich sticky_minutes.cls
+kpsewhich devops_minutes.cls
 ```
 
 ## Usage
@@ -62,8 +64,8 @@ kpsewhich sticky_minutes.cls
 Here is a basic document that shows off the basic package API:
 
 ```latex
-\documentclass[a4paper]{sticky_minutes}
-% Set the document language. The sticky_minutes.cls file supports Dutch and English
+\documentclass[a4paper]{devops_minutes}
+% Set the document language. The devops_minutes.cls file supports Dutch and English
 \usepackage[english]{babel}
 
 % Set the metadata of the meeting:
@@ -130,31 +132,18 @@ action list as appendix that sorts the action items per person as seen here:
 Here is a list of all of the commands that are intended for author use in this
 package.
 
-<dl>
-  <dt><code>\committee{&lt;name&gt;}</code>, or <code>\commissie</code>, <code>\orgaan</code></dt>
-  <dd>The name of the committee of the minutes.</dd>
-
-  <dt><code>\members{&lt;names&gt;}</code>, or: <code>\leden</code></dt>
-  <dd>The members of the committee.</dd>
-
-  <dt><code>\absent{&lt;names&gt;}</code>, or: <code>\afwezig</code></dt>
-  <dd>The persons that are absent.</dd>
-
-  <dt><code>\guests{&lt;names&gt;}</code>, or: <code>\gasten</code></dt>
-  <dd>Guests to the meeting</dd>
-
-  <dt><code>\notetaker{&lt;name&gt;}</code>, or: <code>\notulist</code></dt>
-  <dd>The author of the meeting minutes.</dd>
-
-  <dt><code>\date{&lt;date&gt;}</code>, or: <code>\datum</code></dt>
-  <dd>The date of the meeting.</dd>
-
-  <dt><code>\action{&lt;name&gt;}{&lt;due&gt;}{&lt;content&gt;}</code>, or: <code>\ap</code></dt>
-  <dd>Records an action item for a person.</dd>
-
-  <dt><code>\actionlist</code>, or: <code>\actiepunten</code></dt>
-  <dd>Prints a sorted action list of the meeting.</dd>
-</dl>
+| English               | Dutch                     | Description                                   |
+| --------------------- | ------------------------- | --------------------------------------------- |
+| `\committee{[name]}`  | `\commissie`, `\orgaan`   | The name of the committee of the minutes.     |
+| `\members{[names]}`   | `\leden`                  | The members of the committee.                 |
+| `\chair{[name]}`      | `\voorzitter`             | The chair of the committee.                   |
+| `\absent{[names]}`    | `\afwezig`                | The persons that are absent.                  |
+| `\guests{[names]}`    | `\gasten`                 | Guests to the meeting.                        |
+| `\notetaker{[name]}`  | `\notulist`               | The author of the meeting minutes.            |
+| `\date{[date]}        | `\datum`                  | The date of the meeting.                      |
+| `\action{[name]}{[due]}{[content]}`
+                        | `\ap`                     | Records an action item for a person.          |
+| `\actionlist`         | `\actiepunten`            | Prints a sorted action list of the meeting.   |
 
 ## License
 

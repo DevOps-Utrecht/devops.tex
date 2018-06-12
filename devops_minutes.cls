@@ -1,6 +1,6 @@
 % ---------------------------------------------------------------------------------
-% sticky_minutes.cls
-%   LaTeX template for minutes for Study Association Sticky.
+% devops_minutes.cls (originally sticky_minutes.cls)
+%   LaTeX template for minutes for DevOps Utrecht.
 %
 %   (C) 2015 Laurens Duijvesteijn <l.duijvesteijn@gmail.com>
 %
@@ -14,14 +14,14 @@
 %   The next lines give this class its name, a version and the date of last
 %   modification. It also restricts the input format to LaTex2e.
 %
-\ProvidesClass{sticky_minutes}[2016/05/25 version 0.0.10]
+\ProvidesClass{devops_minutes}[2018/06/12 version 0.0.1]
 \NeedsTeXFormat{LaTeX2e}
 
 %
 % Typography and options
 %
 %   This class depends on the typographical configuration as defined in the style
-%   `sticky_typography.cls`.
+%   `devops_typography.cls`.
 %
 %   The next line reads the options given to the class. If a file is named
 %   `<option>.members` is found, this file is loaded. This is intended for use as
@@ -33,10 +33,10 @@
 %
 
 \DeclareOption*{\InputIfFileExists{\CurrentOption.leden}{}{%
-  \PassOptionsToClass{\CurrentOption}{sticky_typography}}}
+  \PassOptionsToClass{\CurrentOption}{devops_typography}}}
 
 \ProcessOptions \relax
-\LoadClass{sticky_typography}
+\LoadClass{devops_typography}
 
 \RequirePackage{xspace}
 
@@ -74,8 +74,8 @@
 
 \DeclareTranslationFallback{str-chair}
   {Chairperson\xspace}
-\DeclareTranslation{Dutch}{str-voorzitter}
-  {Voorzitter\xspace}                 
+\DeclareTranslation{Dutch}{str-chair}
+  {Voorzitter\xspace}
 
 \DeclareTranslationFallback{str-action}
   {Action\xspace}
@@ -142,6 +142,7 @@
 %     \absent{}                    - Absentees
 %     \guests{}                    - Guests
 %     \notetaker{}                 - The notetaker of the minutes
+%     \chair{}                     - The chair of the committee
 %
 \DeclareAuthorVariable*{committee}
 \DeclareAuthorVariable*{members}
@@ -179,9 +180,9 @@
 \newcommand{\metadata}{%
   \begin{description}
     \item[\GetTranslation{str-members}:] \vars@members
+    \item[\GetTranslation{str-chair}:] \vars@chair
     \item[\GetTranslation{str-absent}:] \vars@absent
     \item[\GetTranslation{str-guests}:] \vars@guests
-    \item[\GetTranslation{str-chair}:] \vars@chair
     \item[\GetTranslation{str-notetaker}:] \vars@notetaker
   \end{description}
 }

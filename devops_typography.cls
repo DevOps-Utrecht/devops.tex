@@ -1,6 +1,6 @@
 % ---------------------------------------------------------------------------------
-% sticky_typography.cls
-%   LaTeX template for typography of Study Association Sticky.
+% devops_typography.cls (originally sticky_typography.cls)
+%   LaTeX template for typography of DevOps Utrecht.
 %
 %   (C) 2015 Laurens Duijvesteijn <l.duijvesteijn@gmail.com>
 %
@@ -14,7 +14,7 @@
 %   The next lines give this class its name, a version and the date of last
 %   modification. It also restricts the input format to LaTex2e.
 %
-\ProvidesClass{sticky_typography}[2015/02/16 version 0.0.1]
+\ProvidesClass{devops_typography}[2018/06/12 version 0.0.1]
 \NeedsTeXFormat{LaTeX2e}
 
 %
