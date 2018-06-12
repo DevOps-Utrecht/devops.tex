@@ -140,9 +140,8 @@ package.
 | `\absent{[names]}`    | `\afwezig`                | The persons that are absent.                  |
 | `\guests{[names]}`    | `\gasten`                 | Guests to the meeting.                        |
 | `\notetaker{[name]}`  | `\notulist`               | The author of the meeting minutes.            |
-| `\date{[date]}        | `\datum`                  | The date of the meeting.                      |
-| `\action{[name]}{[due]}{[content]}`
-                        | `\ap`                     | Records an action item for a person.          |
+| `\date{[date]}`       | `\datum`                  | The date of the meeting.                      |
+| `\action{[name]}{[due]}{[content]}` | `\ap`       | Records an action item for a person.          |
 | `\actionlist`         | `\actiepunten`            | Prints a sorted action list of the meeting.   |
 
 ## License
