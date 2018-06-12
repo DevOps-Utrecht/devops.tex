@@ -53,4 +53,8 @@
   {0em}
   {\hspace{-0.4pt}\Large \thesection\hspace{0.6em}}
 
+% Set a parskip instead of indenting paragraphs.
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{.25pt}
+
 % vim: ft=tex
