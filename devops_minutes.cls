@@ -87,6 +87,11 @@
 \DeclareTranslation{Dutch}{str-actionlist}
   {Overzicht actiepunten\xspace}
 
+\DeclareTranslationFallback{str-location}
+  {Location\xspace}
+\DeclareTranslation{Dutch}{str-location}
+  {Locatie\xspace}
+
 %
 % DeclareAuthorVariable interface
 %
@@ -114,7 +119,7 @@
 %% doesn't provide a value for a mandatory variable, we'll catch the issue.
 \newcommand{\vars@DeclareAuthorVariable}[2]{%
   \@namedef{vars@#2}{#1{#2}}%
-  \@namedef{#2}##1{\@namedef{vars@#2}{##1}}%
+  \@namedef{#2}##1{\@namedef{vars@#2}{##1}\@namedef{vars@#2@defined}{}}%
 }
 %% The error and info messages
 \newcommand{\vars@mandatory@var}[1]{%
@@ -129,12 +134,15 @@
     {Missing value for optional variable
      \expandafter\string\csname#1\endcsname}%
 }
+
+\newcommand{\@ifauthorvariable}[3]{\@ifundefined{vars@#1@defined}{#3}{#2}}
 %   End of CC-BY-SA 3.0 unported code
 
 %
 % AuthorVariable declarations
 %
 %   This class exposes the following variables to authors for use in the template.
+%   All variables, except for the date and the name of the committee, are optional.
 %
 %     \committee{}                 - The name of the committee
 %     \members{}                   - The members of the committee
@@ -143,14 +151,16 @@
 %     \guests{}                    - Guests
 %     \notetaker{}                 - The notetaker of the minutes
 %     \chair{}                     - The chair of the committee
+%     \location{}                  - The location of the meeting
 %
 \DeclareAuthorVariable*{committee}
-\DeclareAuthorVariable*{members}
+\DeclareAuthorVariable{members}
 \DeclareAuthorVariable*{date}
-\DeclareAuthorVariable*{absent}
-\DeclareAuthorVariable*{guests}
-\DeclareAuthorVariable*{notetaker}
-\DeclareAuthorVariable*{chair}
+\DeclareAuthorVariable{absent}
+\DeclareAuthorVariable{guests}
+\DeclareAuthorVariable{notetaker}
+\DeclareAuthorVariable{chair}
+\DeclareAuthorVariable{location}
 
 %
 % Page headers/footers
@@ -179,11 +189,24 @@
 %
 \newcommand{\metadata}{%
   \begin{description}
-    \item[\GetTranslation{str-members}:] \vars@members
-    \item[\GetTranslation{str-chair}:] \vars@chair
-    \item[\GetTranslation{str-absent}:] \vars@absent
-    \item[\GetTranslation{str-guests}:] \vars@guests
-    \item[\GetTranslation{str-notetaker}:] \vars@notetaker
+	\@ifauthorvariable{location}{
+		\item[\GetTranslation{str-location}:] \vars@location
+		}{}
+	\@ifauthorvariable{members}{
+		\item[\GetTranslation{str-members}:] \vars@members
+		}{}
+	\@ifauthorvariable{absent}{
+		\item[\GetTranslation{str-absent}:] \vars@absent
+		}{}
+	\@ifauthorvariable{chair}{
+		\item[\GetTranslation{str-chair}:] \vars@chair
+		}{}
+	\@ifauthorvariable{notetaker}{
+		\item[\GetTranslation{str-notetaker}:] \vars@notetaker
+		}{}
+	\@ifauthorvariable{guests}{
+		\item[\GetTranslation{str-guests}:] \vars@guests
+		}{}
   \end{description}
 }
 
@@ -287,5 +310,6 @@
 \let\hoofd\header
 \let\ap\action
 \let\actiepunten\actionlist
+\let\locatie\location
 
 % vim: ft=tex
