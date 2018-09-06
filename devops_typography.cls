@@ -33,7 +33,6 @@
 
 \ProcessOptions\relax
 \LoadClass{article}
-
 %
 % Typographical adjustments
 %
@@ -44,7 +43,7 @@
 \RequirePackage{carlito}
 \RequirePackage{titlesec}
 \RequirePackage[T1]{fontenc}
-
+\RequirePackage{sourcecodepro}
 
 % Set the font of a \section to TeX Gyre Heros. 'b' is for bold.
 \titleformat{\section}
@@ -52,9 +51,29 @@
   {}
   {0em}
   {\hspace{-0.4pt}\Large \thesection\hspace{0.6em}}
+  
+\titleformat{\subsection}
+  {\carlito{}\bfseries{}}
+  {}
+  {0em}
+  {\hspace{-0.4pt}\large \thesubsection\hspace{0.6em}}
+
+\titleformat{\subsubsection}
+  {\carlito{}\bfseries{}}
+  {}
+  {0em}
+  {\hspace{-0.4pt}\Large \thesubsubsection\hspace{0.6em}}
+
 
 % Set a parskip instead of indenting paragraphs.
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{.25pt}
+
+% Provide macro's for writing names that we'll need more often.
+\RequirePackage{xspace}
+
+\newcommand{\devops}{\texttt{DevOps}\xspace}
+\newcommand{\sticky}{\textit{\mbox{Studievereniging} \mbox{Sticky}}\xspace}
+\newcommand{\DEVOPS}{\textbf{D}ispuut \textbf{E}xclusief \textbf{V}oor \textbf{O}pgetogen \textbf{P}rogrammerende \textbf{S}ticky-ers\xspace}
 
 % vim: ft=tex
